@@ -1,9 +1,15 @@
 <?php
 /**
- * english language file
+ * English language file for template
  *
- * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
-$lang['btn_discussion']   = 'Discussion';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+$lang['discussion']        = 'Discussion';
+$lang['back_to_article']   = 'Back to article';
+$lang['userpage']          = 'User page';
+
+/* accessibility headlines */
+$lang['user_tools']        = 'User Tools';
+$lang['site_tools']        = 'Site Tools';
+$lang['page_tools']        = 'Page Tools';
+$lang['skip_to_content']   = 'skip to content';

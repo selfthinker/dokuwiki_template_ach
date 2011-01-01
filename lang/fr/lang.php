@@ -1,10 +1,10 @@
 <?php
 /**
- * french language file
+ * French language file
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
-$lang['btn_discussion']   = 'Discussion';
+$lang['discussion']   = 'Discussion';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+//Setup VIM: ex: et ts=2 :

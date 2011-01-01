@@ -1,151 +1,156 @@
 <?php
 /**
- * DokuWiki 'ACH' Template
+ * DokuWiki ACH Template
  *
- * This is the template you need to change for the overall look
- * of DokuWiki.
- *
- * You should leave the doctype at the very top - It should
- * always be the very first line of a document.
- *
- * @link   http://wiki.splitbrain.org/wiki:tpl:templates
- * @author Andreas Gohr <andi@splitbrain.org>
- * @author Anika Henke <a.c.henke@arcor.de>
+ * @link   http://dokuwiki.org/template:ach
+ * @author Anika Henke <anika@selfthinker.org>
  */
 
-// must be run from within DokuWiki
-if (!defined('DOKU_INC')) die();
+if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
+@require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 
-/* include template translations */
-include_once(dirname(__FILE__).'/lang/en/lang.php');
-@include_once(dirname(__FILE__).'/lang/'.$conf['lang'].'/lang.php');
-
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
- lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction']?>">
+$showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER['REMOTE_USER'] );
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
+  lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title><?php tpl_pagetitle()?> [<?php echo strip_tags($conf['title'])?>]</title>
-  <?php tpl_metaheaders()?>
-  <link rel="shortcut icon" href="<?php echo DOKU_TPL?>images/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><?php tpl_pagetitle() ?> [<?php echo strip_tags($conf['title']) ?>]</title>
+    <?php tpl_metaheaders() ?>
+    <link rel="shortcut icon" href="<?php echo _tpl_getFavicon() /* DW versions > 2010-11-12 can use the core function tpl_getFavicon() */ ?>" />
+    <?php @include(dirname(__FILE__).'/meta.html') /* include hook */ ?>
 </head>
 
 <body>
-<div id="ach__template" class="dokuwiki">
-  <?php html_msgarea()?><!-- error messages, etc. -->
-  <div id="ach__header">
- 
-    <h1><?php tpl_link(wl(),$conf['title'],'name="dokuwiki__top" id="dokuwiki__top" accesskey="h" title="[ALT+H]"')?></h1>
-    <h2>[[<?php echo $ID?>]]</h2>
+    <?php /* with these Conditional Comments you can better address IE issues in CSS files,
+             precede CSS rules by #IE6 for IE6, #IE7 for IE7 and #IE8 for IE8 (div closes at the bottom) */ ?>
+    <!--[if IE 6 ]><div id="IE6"><![endif]--><!--[if IE 7 ]><div id="IE7"><![endif]--><!--[if IE 8 ]><div id="IE8"><![endif]-->
 
-    <?php if($conf['breadcrumbs']){?>
-      <p class="trace"><?php tpl_breadcrumbs()?></p>
-    <?php }?>
-    <?php if($conf['youarehere']){?>
-      <p class="trace"><?php tpl_youarehere()?></p>
-    <?php }?>
-  </div><!-- /ach__header -->
-  <hr class="invisible" />
+    <?php /* classes mode_<action> are added to make it possible to e.g. style a page differently if it's in edit mode,
+         see http://www.dokuwiki.org/devel:action_modes for a list of action modes */ ?>
+    <?php /* .dokuwiki should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
+    <div id="dokuwiki__site"><div class="dokuwiki site mode_<?php echo $ACT ?>">
+        <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
+        <?php @include(dirname(__FILE__).'/header.html') /* include hook */ ?>
 
-  <div id="ach__mainbox">
+        <!-- ********** HEADER ********** -->
+        <div id="dokuwiki__header"><div class="pad">
 
-    <div id="ach__pageactions">
-      <?php tpl_button('edit')?>
-      <?php
-        $discussNS='discussion:';
-        if(substr($ID,0,strlen($discussNS))==$discussNS) {
-          $backID=substr(strstr($ID,':'),1);
-          print html_btn('back',$backID,'',array());
-          /*link instead of button: tpl_pagelink(':'.$backID,$lang['btn_back']);*/
-        } else {
-          print html_btn('discussion',$discussNS.$ID,'',array());
-          /*link instead of button: tpl_pagelink($discussNS.$ID,$lang['btn_discussion']);*/
-        }
-      ?>
-      <?php tpl_button('history')?>
-      <?php tpl_button('backlink')?>
-    </div><!-- /ach__pageactions -->
-    
+            <h1><?php tpl_link(wl(),$conf['title'],'id="dokuwiki__top" accesskey="h" title="[ALT+H]"')?></h1>
+            <h2>[[<?php echo $ID?>]]</h2>
 
-    <div id="ach__siteactions">
-      <div class="box">
-        <ul>
-          <li><?php tpl_link(wl('wiki:syntax'),'Wiki Syntax')?></li>
-          <li><?php tpl_actionlink('recent')?></li>
-          <li><?php tpl_actionlink('index')?></li>
-        </ul>
-        <?php tpl_searchform()?>
-      </div>
-       
-<!-- todo: navigation bar
-      <div class="box">
-        <?/*php html_index($IDX);*/?>
-      </div>
--->
-      <?php if($conf['useacl']){?>
-      <div class="box">
-      <?php if($_SERVER['REMOTE_USER']){
-         ob_start();
-         tpl_actionlink('profile');
-         $_profile = ob_get_contents();
-         ob_end_clean();
+            <!-- BREADCRUMBS -->
+            <?php if($conf['breadcrumbs']){ ?>
+                <div class="breadcrumbs"><?php tpl_breadcrumbs() ?></div>
+            <?php } ?>
+            <?php if($conf['youarehere']){ ?>
+                <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
+            <?php } ?>
 
-         ob_start();
-         tpl_actionlink('subscription');
-         $_subscription = ob_get_contents();
-         ob_end_clean();
+            <ul class="a11y">
+                <li><a href="#dokuwiki__content"><?php echo tpl_getLang('skip_to_content') ?></a></li>
+            </ul>
+            <div class="clearer"></div>
+            <hr class="a11y" />
+        </div></div><!-- /header -->
 
-         ob_start();
-         tpl_actionlink('admin');
-         $_admin = ob_get_contents();
-         ob_end_clean();
-      ?>
-          <ul>
-            <li><?php tpl_actionlink('login')?></li>
-            <?php if($_profile){?>
-               <li><?php print $_profile;?></li>
-            <?php }?>
-            <?php if($_subscription){?>
-               <li><?php print $_subscription;?></li>
-            <?php }?>
-            <?php if($_admin){?>
-               <li><?php print $_admin;?></li>
-            <?php }?>
-          </ul>
-          <p><em><?php tpl_userinfo()?></em></p>
-        <?php }else{
-          html_login();
-        }?>
-      </div>
-      <?php }?>
-    </div><!-- /ach__siteactions -->
-    <hr class="invisible" />
+        <div class="wrapper">
 
-    <?php flush()?>
+            <!-- PAGE ACTIONS -->
+            <?php if ($showTools): ?>
+                <div id="dokuwiki__pagetools">
+                    <h3 class="a11y"><?php echo tpl_getLang('page_tools') ?></h3>
+                    <ul>
+                        <?php /* the optional second parameter of tpl_action() switches between a link and a button,
+                                 e.g. a button inside a <li> would be: tpl_action('edit',0,'li') */
+                            tpl_action('edit', 0, 'li');
+                            _tpl_action('discussion', 0, 'li');
+                            tpl_action('history', 0, 'li');
+                            tpl_action('backlink', 0, 'li');
+                            tpl_action('subscribe', 0, 'li');
+                            tpl_action('revert', 0, 'li');
+                        ?>
+                    </ul>
+                </div>
+                <div class="clearer"></div>
+            <?php endif; ?>
 
-    <div id="ach__content">
-      <!-- wikipage start -->
-      <?php tpl_content()?>
-      <!-- wikipage stop -->
-      <div class="clearer">&nbsp;</div>
-    </div><!-- /ach__content -->
+            <!-- ********** ASIDE ********** -->
+            <div id="dokuwiki__aside"><div class="pad include">
 
-    <?php flush()?>
+                <?php tpl_include_page(tpl_getConf('sidebarID')) /* includes the given wiki page */ ?>
 
-  </div><!-- /ach__mainbox -->
-  <hr class="invisible" />
+                <!-- SITE TOOLS -->
+                <div id="dokuwiki__sitetools">
+                    <h3 class="a11y"><?php echo tpl_getLang('site_tools') ?></h3>
+                    <ul>
+                        <?php
+                            tpl_action('recent', 1, 'li');
+                            tpl_action('index', 1, 'li');
+                        ?>
+                    </ul>
+                    <?php tpl_searchform() ?>
+                </div>
 
+                <!-- USER TOOLS -->
+                <?php if ($conf['useacl'] && $showTools): ?>
+                    <div id="dokuwiki__usertools">
+                        <h3 class="a11y"><?php echo tpl_getLang('user_tools') ?></h3>
+                        <?php if($_SERVER['REMOTE_USER']){ ?>
+                            <ul>
+                                <?php
+                                    tpl_action('login', 1, 'li');
+                                    tpl_action('profile', 1, 'li');
+                                    tpl_action('admin', 1, 'li');
+                                    _tpl_action('userpage', 1, 'li');
+                                ?>
+                            </ul>
+                            <div class="user"><?php tpl_userinfo() /* 'Logged in as ...' */ ?></div>
+                        <?php }else{
+                            html_login();
+                        }?>
+                    </div>
+                <?php endif ?>
 
-  <div id="ach__footer">
-        <p class="pageinfo"><?php tpl_pageinfo()?></p>
-        <p><?php tpl_actionlink('top')?></p>
-      <div class="clearer">&nbsp;</div>
-  </div>
+                <div class="clearer"></div>
+            </div></div><!-- /aside -->
 
-</div><!-- /ach__template -->
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad">
+                <?php tpl_flush() /* flush the output buffer */ ?>
+                <?php @include(dirname(__FILE__).'/pageheader.html') /* include hook */ ?>
 
-<div class="no"><?php tpl_indexerWebBug()?></div>
+                <div class="page">
+                    <!-- wikipage start -->
+                    <?php tpl_content() /* the main content */ ?>
+                    <!-- wikipage stop -->
+                    <div class="clearer"></div>
+                </div>
+
+                <?php tpl_flush() ?>
+                <?php @include(dirname(__FILE__).'/pagefooter.html') /* include hook */ ?>
+            </div></div><!-- /content -->
+
+            <div class="clearer"></div>
+            <hr class="a11y" />
+
+        </div><!-- /wrapper -->
+
+        <!-- ********** FOOTER ********** -->
+        <div id="dokuwiki__footer"><div class="pad">
+            <div class="doc"><?php tpl_pageinfo() /* 'Last modified' etc */ ?></div>
+            <?php tpl_action('top',1) ?>
+            <div class="clearer"></div>
+        </div></div><!-- /footer -->
+
+        <div class="license_footer">
+            <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
+        </div>
+        <?php @include(dirname(__FILE__).'/footer.html') /* include hook */ ?>
+    </div></div><!-- /site -->
+
+    <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
+    <!--[if ( IE 6 | IE 7 | IE 8 ) ]></div><![endif]-->
 </body>
 </html>

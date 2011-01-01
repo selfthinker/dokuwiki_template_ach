@@ -1,10 +1,10 @@
 <?php
 /**
- * romanian language file
+ * Romanian language file
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
-$lang['btn_discussion']   = 'Discutie';
+$lang['discussion']   = 'Discutie';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+//Setup VIM: ex: et ts=2 :

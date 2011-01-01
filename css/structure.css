@@ -1,0 +1,54 @@
+/**
+ * This file provides styles for the general layout structure.
+ *
+ * @author Anika Henke <anika@selfthinker.org>
+ */
+
+#dokuwiki__site {
+}
+#dokuwiki__site .site {
+    padding: 0 10px;
+}
+
+#dokuwiki__header {
+}
+#dokuwiki__header .pad {
+}
+
+#dokuwiki__site .wrapper {
+    position: relative;
+}
+#IE6 #dokuwiki__site .wrapper,
+#IE7 #dokuwiki__site .wrapper {
+    height: 1%;
+}
+
+    #dokuwiki__aside {
+        width: __sidebar_width__;
+        float: left;
+        position: relative;
+        display: block;
+    }
+    #dokuwiki__aside .pad {
+        margin-right: 10px;
+    }
+
+    #dokuwiki__content {
+        float: right;
+        margin-left: -__sidebar_width__; /* left negative margin: width of sidebar (#dokuwiki__aside) */
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    #dokuwiki__content .pad {
+        margin-left: __sidebar_width__; /* left positive margin: width of sidebar (#dokuwiki__aside) */
+    }
+    #IE6 #dokuwiki__content .pad,
+    #IE7 #dokuwiki__content .pad {
+        height: 1%;
+    }
+
+#dokuwiki__footer {
+    clear: both;
+}
+#dokuwiki__footer .pad {
+}

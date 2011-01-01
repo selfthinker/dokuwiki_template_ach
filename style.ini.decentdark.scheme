@@ -1,56 +1,92 @@
-; css pattern replacement file for ACH template
-; usage: simply rename this file to 'style.ini'
+; Please see http://www.php.net/manual/en/function.parse-ini-file.php
+; for limitations of the ini format used here
 
-
-;---------- stylesheets for ACH template ----------
+; Define the stylesheets your template uses here. The second value
+; defines for which output media the style should be loaded. Currently
+; print, screen and rtl are supported. rtl styles are loaded additionally
+; to screen styles if a right-to-left language is selected (eg. Hebrew).
 
 [stylesheets]
 
-layout.css  = screen
-design.css  = screen
-essential.css   = screen
-media.css   = screen
-style.css   = screen
-rtl.css     = rtl
-print.css   = print
+css/basic.css           = screen
+css/structure.css       = screen
+css/design.css          = screen
+css/content.css         = screen
+css/_imgdetail.css      = screen
+css/_mediamanager.css   = screen
+css/_links.css          = screen
+css/_toc.css            = screen
+css/_footnotes.css      = screen
+css/_search.css         = screen
+css/_recent.css         = screen
+css/_diff.css           = screen
+css/_edit.css           = screen
+css/_modal.css          = screen
+css/_forms.css          = screen
+css/_admin.css          = screen
+css/includes.css        = screen
+
+css/rtl.css             = rtl
+css/print.css           = print
 
 
-;---------- color scheme 'decent dark' ----------
+; This section is used to configure some placeholder values used in
+; the stylesheets. Changing this file is the simplest method to
+; give your wiki a new look.
 
 [replacements]
 
 ; colors
 
-__text__            = "#fff"
-__text_alt__        = "#c96"
-__text_neu__        = "#999"
-__text_headline__   = "#fff"
+;------ guaranteed dokuwiki color placeholders that every plugin can use
 
-__link_normal__     = "#cc9"
-__link_existent__   = "#cc9"
-__link_nonexistent__= "#fc0"
-__link_title__      = "#cc9"
+; main text and background colors
+__text__                = "#fff"
+__background__          = "#333"
 
-__background__      = "#333"
-__background_alt__  = "#333"
-__background_neu__  = "#666"
+; alternative text and background colors
+__text_alt__            = "#c96"
+__background_alt__      = "#333"
 
-__border__          = "#c96"
-__border_alt__      = "#996"
-__border_neu__      = "#999"
+; neutral text and background colors
+__text_neu__            = "#999"
+__background_neu__      = "#666"
+
+; border color
+__border__              = "#c96"
+
+;------ additional color placeholders
+
+__text_headline__       = "#fff"
+__border_alt__          = "#996"
+__border_neu__          = "#999"
+
+; link colors
+__link_normal__         = "#cc9"
+__link_existent__       = "#cc9"
+__link_nonexistent__    = "#fc0"
+__link_title__          = "#cc9"
+
+; highlighting search snippets
+__highlight__           = "#666"
 
 ; toc colors
-
 __toc_head_background__ = "#666"
 __toc_head_text__       = "#fff"
 __toc_head_border__     = "#666"
 __toc_body_background__ = "#333"
 __toc_body_border__     = "#c96"
 
-; section indenting
 
-__level1__      = "0px"
-__level2__      = "0px"
-__level3__      = "0px"
-__level4__      = "20px"
-__level5__      = "40px"
+;------ other placeholders
+
+; section indenting
+__level1__              = "0px"
+__level2__              = "0px"
+__level3__              = "0px"
+__level4__              = "20px"
+__level5__              = "40px"
+
+; sidebar dimensions
+__sidebar_width__       = "185px"
+

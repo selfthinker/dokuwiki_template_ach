@@ -1,10 +1,18 @@
 <?php
 /**
- * german language file
+ * German language file
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
-$lang['btn_discussion']   = 'Diskussion';
+$lang['discussion']        = 'Diskussion';
+$lang['back_to_article']   = 'Zurück zum Artikel';
+$lang['userpage']          = 'Benutzer-Seite';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+/* accessibility headlines */
+$lang['user_tools']        = 'Benutzer-Werkzeuge';
+$lang['site_tools']        = 'Webseiten-Werkzeuge';
+$lang['page_tools']        = 'Seiten-Werkzeuge';
+$lang['skip_to_content']   = 'springe zum Inhalt';
+
+//Setup VIM: ex: et ts=2 :

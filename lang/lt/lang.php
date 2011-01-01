@@ -1,10 +1,10 @@
 <?
 /**
- * lithuanian language file
+ * Lithuanian language file
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
-$lang['btn_discussion']   = 'Aptarimas';
+$lang['discussion']   = 'Aptarimas';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+//Setup VIM: ex: et ts=2 :

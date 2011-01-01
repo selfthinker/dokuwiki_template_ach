@@ -1,0 +1,111 @@
+/**
+ * This file provides the main design styles for the page content.
+ *
+ * @author Anika Henke <anika@selfthinker.org>
+ * @author Andreas Gohr <andi@splitbrain.org>
+ */
+
+
+/*____________ section indenting ____________*/
+
+.dokuwiki.page  h1 {margin-left: __level1__;}
+.dokuwiki.page  h2 {margin-left: __level2__;}
+.dokuwiki.page  h3 {margin-left: __level3__;}
+.dokuwiki.page  h4 {margin-left: __level4__;}
+.dokuwiki.page  h5 {margin-left: __level5__;}
+.dokuwiki.page  div.level1 {margin-left: __level1__;}
+.dokuwiki.page  div.level2 {margin-left: __level2__;}
+.dokuwiki.page  div.level3 {margin-left: __level3__;}
+.dokuwiki.page  div.level4 {margin-left: __level4__;}
+.dokuwiki.page  div.level5 {margin-left: __level5__;}
+
+
+/*____________ images ____________*/
+
+/* embedded images (styles are already partly set in lib/styles/style.css) */
+.dokuwiki img.media       { }
+.dokuwiki img.medialeft   { margin: .5em .5em .5em 0; }
+.dokuwiki img.mediaright  { margin: .5em 0 .5em .5em; }
+.dokuwiki img.mediacenter { margin: .5em auto; }
+
+
+/*____________ tables ____________*/
+
+.dokuwiki table.inline {
+    min-width: 50%;
+    border: 1px solid __border__;
+}
+.dokuwiki table.inline th,
+.dokuwiki table.inline td {
+    border: 1px solid __border__;
+}
+.dokuwiki table.inline th {
+    background-color: __background__;
+    color: __text_alt__;
+}
+.dokuwiki table.inline td {
+}
+
+
+/*____________ code ____________*/
+
+.dokuwiki pre,
+.dokuwiki tt,
+.dokuwiki code,
+.dokuwiki samp,
+.dokuwiki kbd {
+}
+/* fix if background-color hides underlining */
+.dokuwiki em.u code {
+    text-decoration: underline;
+}
+.dokuwiki pre {
+}
+/* for code in <file> */
+.dokuwiki pre.file {
+}
+
+/* filenames for downloadable file and code blocks */
+.dokuwiki dl.code,
+.dokuwiki dl.file {
+}
+
+.dokuwiki dl.code dt,
+.dokuwiki dl.file dt {
+    background-color: __background_alt__;
+    border: solid __border__;
+    border-width: 1px 1px 0;
+    color: inherit;
+    display: inline;
+    padding: 0 .5em;
+    margin-left: 1em;
+}
+.dokuwiki dl.code dt a,
+.dokuwiki dl.file dt a {
+}
+
+.dokuwiki dl.code dd,
+.dokuwiki dl.file dd {
+    margin: 0;
+}
+
+
+/*____________ quotes ____________*/
+
+.dokuwiki blockquote {
+    border-left: 2px solid #606;
+    padding: 0 0 0 0.5em;
+    margin-bottom: 1em;
+}
+.dokuwiki blockquote blockquote {
+    border-left: 2px solid #066;/*900*/
+}
+.dokuwiki blockquote blockquote blockquote {
+    border-left: 2px solid #900;/*f00*/
+}
+.dokuwiki blockquote blockquote blockquote blockquote {
+    border-left: 2px solid #009;/*999*/
+}
+.dokuwiki blockquote blockquote blockquote blockquote blockquote {
+    border-left: 2px solid #c60;/*fff,ccc*/
+}

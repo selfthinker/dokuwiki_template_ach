@@ -1,0 +1,54 @@
+/**
+ * This file provides styles for the image detail page (detail.php).
+ */
+
+#dokuwiki__detail {
+}
+#dokuwiki__detail h1 {
+    font-size: 1.58em;
+    padding: .5em 10px;
+    margin: 0;
+    border-bottom: 1px solid __border_alt__;
+    background-color: __background__;
+    color: __text_alt__;
+    letter-spacing: 0;
+    font-variant: normal;
+}
+
+#dokuwiki__detail div.content {
+    background-color: __background_alt__;
+    color: __text__;
+    padding: 10px;
+}
+
+#dokuwiki__detail div.content img {
+    float: left;
+    margin-right: 1.5em;
+}
+#dokuwiki__detail div.content div.img_detail {
+    float: left;
+    margin: 0 10px;
+    padding: 0 10px;
+    border-left: 1px solid __border__;
+}
+
+#dokuwiki__detail div.img_detail h2 {
+    font-size: 1.39em;
+}
+#dokuwiki__detail div.img_detail dl {
+}
+#dokuwiki__detail div.img_detail dl dt {
+}
+#dokuwiki__detail div.img_detail dl dd {
+}
+
+#dokuwiki__detail p.back {
+    padding: 0.5em 1.0em;
+    border-top: 1px solid __border_alt__;
+    background-color: __background__;
+    color: __text_alt__;
+}
+#dokuwiki__detail p.back a {
+    color: __link_title__;
+    background-color: inherit;
+}

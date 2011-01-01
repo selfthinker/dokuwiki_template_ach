@@ -1,11 +1,10 @@
 <?php
 /**
- * polish language file
- * based on english one
+ * Polish language file
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
-$lang['btn_discussion']   = 'Dyskusja';
+$lang['discussion']   = 'Dyskusja';
 
-//Setup VIM: ex: et ts=2 enc=utf-8 :
+//Setup VIM: ex: et ts=2 :

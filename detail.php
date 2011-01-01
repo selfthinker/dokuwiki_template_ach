@@ -1,94 +1,81 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
- "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
 /**
- * DokuWiki Image Detail Template
+ * DokuWiki Image Detail Page
  *
- * This is the template for displaying image details
- *
- * You should leave the doctype at the very top - It should
- * always be the very first line of a document.
- *
- * @link   http://wiki.splitbrain.org/wiki:tpl:templates
  * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Anika Henke <anika@selfthinker.org>
  */
-?>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>" lang="<?php echo $conf['lang']?>" dir="ltr">
+
+// must be run from within DokuWiki
+if (!defined('DOKU_INC')) die();
+
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
+ lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>">
 <head>
-  <title>
-     <?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?>
-    [<?php echo hsc($conf['title'])?>]
-  </title>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-  <?php tpl_metaheaders()?>
-
-  <link rel="shortcut icon" href="<?php echo DOKU_BASE?>lib/images/favicon.ico" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        <?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?>
+        [<?php echo strip_tags($conf['title'])?>]
+    </title>
+    <?php tpl_metaheaders()?>
+    <link rel="shortcut icon" href="<?php echo ml('favicon.ico') ?>" />
 </head>
 
 <body>
-<div id="ach__template">
-<div id="ach__content" class="content_media">
-  <?php html_msgarea()?>
+    <!--[if IE 6 ]><div id="IE6"><![endif]--><!--[if IE 7 ]><div id="IE7"><![endif]--><!--[if IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__detail" class="dokuwiki">
+        <?php html_msgarea() ?>
 
-  <?php if($ERROR){ print $ERROR; }else{ ?>
+        <?php if($ERROR){ print $ERROR; }else{ ?>
 
-  <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?></h1>
+            <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?></h1>
 
-   <div class="img_box">
-	  <div class="img_big">
-	  	<?php tpl_img(900,700) ?>
-           <p class="img_caption">
-              <?php print nl2br(hsc(tpl_img_getTag(array('IPTC.Caption',
-                                               'EXIF.UserComment',
-                                               'EXIF.TIFFImageDescription',
-                                               'EXIF.TIFFUserComment')))); ?>
-          </p>
-	  </div>
+            <div class="content">
+                <?php tpl_img(900,700) ?>
 
-      <div class="img_detail">
+                <div class="img_detail">
+                    <h2><?php print nl2br(hsc(tpl_img_getTag('simple.title'))); ?></h2>
 
-      <dl class="img_tags">
-        <?php
-					$t = tpl_img_getTag('Date.EarliestTime');
-          if($t) print '<dt>'.$lang['img_date'].':</dt><dd>'.date($conf['dformat'],$t).'</dd>';
+                    <dl>
+                        <?php
+                            $t = tpl_img_getTag('Date.EarliestTime');
+                            if($t) print '<dt>'.$lang['img_date'].':</dt><dd>'.dformat($t).'</dd>';
 
-          $t = tpl_img_getTag('File.Name');
-          if($t) print '<dt>'.$lang['img_fname'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag('File.Name');
+                            if($t) print '<dt>'.$lang['img_fname'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag(array('Iptc.Byline','Exif.TIFFArtist','Exif.Artist','Iptc.Credit'));
-          if($t) print '<dt>'.$lang['img_artist'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag(array('Iptc.Byline','Exif.TIFFArtist','Exif.Artist','Iptc.Credit'));
+                            if($t) print '<dt>'.$lang['img_artist'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag(array('Iptc.CopyrightNotice','Exif.TIFFCopyright','Exif.Copyright'));
-          if($t) print '<dt>'.$lang['img_copyr'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag(array('Iptc.CopyrightNotice','Exif.TIFFCopyright','Exif.Copyright'));
+                            if($t) print '<dt>'.$lang['img_copyr'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag('File.Format');
-          if($t) print '<dt>'.$lang['img_format'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag('File.Format');
+                            if($t) print '<dt>'.$lang['img_format'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag('File.NiceSize');
-          if($t) print '<dt>'.$lang['img_fsize'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag('File.NiceSize');
+                            if($t) print '<dt>'.$lang['img_fsize'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag('Simple.Camera');
-          if($t) print '<dt>'.$lang['img_camera'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag('Simple.Camera');
+                            if($t) print '<dt>'.$lang['img_camera'].':</dt><dd>'.hsc($t).'</dd>';
 
-          $t = tpl_img_getTag(array('IPTC.Keywords','IPTC.Category'));
-          if($t) print '<dt>'.$lang['img_keywords'].':</dt><dd>'.hsc($t).'</dd>';
+                            $t = tpl_img_getTag(array('IPTC.Keywords','IPTC.Category','xmp.dc:subject'));
+                            if($t) print '<dt>'.$lang['img_keywords'].':</dt><dd>'.hsc($t).'</dd>';
 
-        ?>
-      </dl>
-      <?php //Comment in for Debug// dbg(tpl_img_getTag('Simple.Raw'));?>
+                        ?>
+                    </dl>
+                    <?php //Comment in for Debug// dbg(tpl_img_getTag('Simple.Raw'));?>
+                </div>
+                <div class="clearer"></div>
+            </div><!-- /.content -->
 
-           <div class="clearer">&nbsp;</div>
-		</div>
-  <?php } ?>
-  </div>
-           <div class="clearer">&nbsp;</div>
+            <p class="back">&larr; <?php echo $lang['img_backto']?> <?php tpl_pagelink($ID)?></p>
 
-      <div class="footer">
-         <p>&larr; <?php echo $lang['img_backto']?> <?php tpl_pagelink($ID)?></p>
-      </div>
-</div>
-</div>
+        <?php } ?>
+    </div>
+    <!--[if ( IE 6 | IE 7 | IE 8 ) ]></div><![endif]-->
 </body>
 </html>
 
