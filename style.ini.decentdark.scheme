@@ -1,0 +1,56 @@
+; css pattern replacement file for ACH template
+; usage: simply rename this file to 'style.ini'
+
+
+;---------- stylesheets for ACH template ----------
+
+[stylesheets]
+
+layout.css  = screen
+design.css  = screen
+essential.css   = screen
+media.css   = screen
+style.css   = screen
+rtl.css     = rtl
+print.css   = print
+
+
+;---------- color scheme 'decent dark' ----------
+
+[replacements]
+
+; colors
+
+__text__            = "#fff"
+__text_alt__        = "#c96"
+__text_neu__        = "#999"
+__text_headline__   = "#fff"
+
+__link_normal__     = "#cc9"
+__link_existent__   = "#cc9"
+__link_nonexistent__= "#fc0"
+__link_title__      = "#cc9"
+
+__background__      = "#333"
+__background_alt__  = "#333"
+__background_neu__  = "#666"
+
+__border__          = "#c96"
+__border_alt__      = "#996"
+__border_neu__      = "#999"
+
+; toc colors
+
+__toc_head_background__ = "#666"
+__toc_head_text__       = "#fff"
+__toc_head_border__     = "#666"
+__toc_body_background__ = "#333"
+__toc_body_border__     = "#c96"
+
+; section indenting
+
+__level1__      = "0px"
+__level2__      = "0px"
+__level3__      = "0px"
+__level4__      = "20px"
+__level5__      = "40px"
