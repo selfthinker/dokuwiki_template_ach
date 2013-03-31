@@ -5,6 +5,10 @@
  * @author   Andreas Gohr <andi@splitbrain.org>
  * @license  GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
+// must be run from within DokuWiki
+if (!defined('DOKU_INC')) die();
+@require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
+
 ?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
   lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>" class="popup no-js">

@@ -28,7 +28,7 @@ html.popup {
     border-right-width: 0;
     border-left: 1px solid __border__;
 }
-#mediamgr__aside > .pad {
+#mediamgr__aside .pad {
     padding: .5em;
 }
 
@@ -43,7 +43,7 @@ html.popup {
     right: auto;
     left: 0;
 }
-#mediamgr__content > .pad {
+#mediamgr__content .pad {
     padding: .5em;
 }
 

@@ -9,10 +9,11 @@
 
 // must be run from within DokuWiki
 if (!defined('DOKU_INC')) die();
+@require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 
 ?><!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
-  lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang']?>"
+ lang="<?php echo $conf['lang']?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
 <head>
     <meta charset="UTF-8" />
     <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
@@ -21,7 +22,7 @@ if (!defined('DOKU_INC')) die();
         [<?php echo strip_tags($conf['title'])?>]
     </title>
     <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
-    <?php tpl_metaheaders() ?>
+    <?php tpl_metaheaders()?>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
     <?php tpl_includeFile('meta.html') ?>
@@ -37,7 +38,7 @@ if (!defined('DOKU_INC')) die();
             <h1><?php echo hsc(tpl_img_getTag('IPTC.Headline',$IMG))?></h1>
 
             <div class="content">
-                <?php tpl_img(900,700) ?>
+                <?php tpl_img(900,700); /* parameters: maximum width, maximum height (and more) */ ?>
 
                 <div class="img_detail">
                     <h2><?php print nl2br(hsc(tpl_img_getTag('simple.title'))); ?></h2>

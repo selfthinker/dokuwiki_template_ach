@@ -23,12 +23,15 @@ html.popup body {
 #dokuwiki__header h1 {
     font-size: 2em;
     float: left;
-    width:30%;
+    width: 30%;
     margin-bottom: 0;
     clear: none;
     letter-spacing: normal;
     font-variant: normal;
     border-bottom-width: 0;
+}
+[dir=rtl] #dokuwiki__header h1 {
+    float: right;
 }
 #dokuwiki__header h1 a {
     text-decoration: none;
@@ -40,19 +43,23 @@ html.popup body {
     margin-bottom: 0;
     font-size: 2em;
     float: right;
-    width:68%;
+    width: 68%;
     text-align: right;
-    color:__text_alt__;
+    color: __text_alt__;
     background-color: inherit;
     clear: none;
     letter-spacing: normal;
     border-bottom-width: 0;
 }
+[dir=rtl] #dokuwiki__header h2 {
+    float: left;
+    text-align: left;
+}
 
 #dokuwiki__header div.breadcrumbs {
     padding: 0 1px;
     clear: both;
-    border-top:1px solid __border_alt__;
+    border-top: 1px solid __border_alt__;
     font-size: 75%;
     background-color: __background_alt__;
     color: __text__;
@@ -99,6 +106,9 @@ html.popup body {
 #dokuwiki__pagetools {
     margin: 0 0 10px __sidebar_width__;
 }
+[dir=rtl] #dokuwiki__pagetools {
+    margin: 0 __sidebar_width__ 10px 0;
+}
 #dokuwiki__pagetools ul {
     padding: 0;
     margin: 0;
@@ -107,6 +117,9 @@ html.popup body {
     display: inline;
     margin: 0;
     padding: 0 5px 0 0;
+}
+[dir=rtl] #dokuwiki__pagetools ul li {
+    padding: 0 0 0 5px;
 }
 #dokuwiki__pagetools input {
     padding: 0.2em 1.0em;
@@ -150,6 +163,7 @@ html.popup body {
 
 #dokuwiki__aside ul, #dokuwiki__aside ol {
     padding-left: 0;
+    padding-right: 0;
 }
 #dokuwiki__aside li ul, #dokuwiki__aside li ol {
     margin-bottom: 0;
@@ -192,6 +206,9 @@ html.popup body {
     text-align: left;
     font-weight: normal;
 }
+[dir=rtl] #dokuwiki__aside label {
+    text-align: right;
+}
 #dokuwiki__aside input {
     width: 100%;
     margin: .1em 0;
@@ -205,6 +222,9 @@ html.popup body {
     width: auto;
     text-align: left;
 }
+[dir=rtl] #dokuwiki__usertools div.level1 {
+    text-align: right;
+}
 #dokuwiki__usertools h1 {
     font-size: 1.1em;
     margin-bottom: 1em;
@@ -216,13 +236,20 @@ html.popup body {
 #dw__login {
     text-align: left;
 }
+[dir=rtl] #dw__login {
+    text-align: right;
+}
 #dw__login br {
     display: none;
 }
 #dokuwiki__usertools legend {
     display: none;
 }
-#remember__me {
+
+#dw__login label[for="remember__me"] {
+    margin: 0;
+}
+#dw__login label[for="remember__me"] input {
     margin: 0;
     padding: 0;
     width: auto;
@@ -233,7 +260,10 @@ html.popup body {
 ********************************************************************/
 
 .dokuwiki .wrapper {
-    background:url(images/logo.png) no-repeat 25px 0;
+    background: url(images/logo.png) no-repeat 25px 0;
+}
+[dir=rtl] .dokuwiki .wrapper {
+    background-position: right 0;
 }
 
 .dokuwiki .page {
@@ -263,17 +293,28 @@ html.popup body {
     background-color: __background_alt__;
 }
 
+/* some headings in the media manager should not look like headings */
+#mediamanager__page h2,
+#mediamanager__page h3 {
+    border-bottom-width: 0;
+    letter-spacing: 0;
+}
+
 .dokuwiki div.section_highlight {
     margin: 0;
     padding: 0;
     border-width: 0;
 }
 .dokuwiki .section_highlight {
-    background-color: __background_alt__;
+    background-color: __background_neu__;
 }
 
 .dokuwiki div.toolbar button.toolbutton {
     margin-right: .3em;
+}
+[dir=rtl] .dokuwiki div.toolbar button.toolbutton {
+    margin-right: 0;
+    margin-left: .3em;
 }
 div.picker {
     border-color: __border_alt__;
@@ -312,6 +353,11 @@ div.insitu-footnote {
 .dokuwiki dl.search_results dd {
     margin-left: 1em;
 }
+[dir=rtl] .dokuwiki div.search_result div.search_snippet,
+[dir=rtl] .dokuwiki dl.search_results dd {
+    margin-left: 0;
+    margin-right: 1em;
+}
 
 
 .dokuwiki form.search div.ajax_qsearch {
@@ -331,6 +377,12 @@ div.insitu-footnote {
 .dokuwiki ul.tabs li a:focus,
 .dokuwiki ul.tabs li strong {
     background-color: __background_neu__;
+}
+#mediamanager__page .namespaces h2,
+.dokuwiki .tabs > ul li .curid a,
+.dokuwiki .tabs > ul li .active a,
+.dokuwiki ul.tabs li strong {
+    border-bottom-color: __background_neu__;
 }
 
 #link__wiz_result {
@@ -380,7 +432,11 @@ div.insitu-footnote {
 #dokuwiki__detail div.content div.img_detail {
     margin: 0 10px;
     padding: 0 10px;
-    border-left: 1px solid __border__;
+    border: solid __border__;
+    border-width: 0 0 0 1px;
+}
+[dir=rtl] #dokuwiki__detail div.content div.img_detail {
+    border-width: 0 1px 0 0;
 }
 
 #dokuwiki__detail div.img_detail h2 {
@@ -457,6 +513,7 @@ div.insitu-footnote {
 .JSpopup ul,
 .JSpopup ol {
     padding-left: 0;
+    padding-right: 0;
 }
 
 
@@ -480,8 +537,14 @@ div.insitu-footnote {
     float: left;
     font-style: italic;
 }
+[dir=rtl] #dokuwiki__footer .doc {
+    float: right;
+}
 #dokuwiki__footer .top {
     float: right;
+}
+[dir=rtl] #dokuwiki__footer .top {
+    float: left;
 }
 .dokuwiki .license_footer {
     margin-bottom: 10px;
@@ -492,5 +555,8 @@ div.insitu-footnote {
 .dokuwiki .license_footer .license img {
     margin: 0 .5em 0 0;
     float: none;
+}
+[dir=rtl] .dokuwiki .license_footer .license img {
+    margin: 0 0 0 .5em;
 }
 

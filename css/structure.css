@@ -35,8 +35,15 @@ body {
         position: relative;
         display: block;
     }
+    [dir=rtl] #dokuwiki__aside {
+        float: right;
+    }
     #dokuwiki__aside > .pad {
         margin-right: 10px;
+    }
+    [dir=rtl] #dokuwiki__aside > .pad {
+        margin-right: 0;
+        margin-left: 10px;
     }
 
     #dokuwiki__content {
@@ -45,8 +52,17 @@ body {
         width: 100%;
         margin-bottom: 10px;
     }
+    [dir=rtl] #dokuwiki__content {
+        float: left;
+        margin-left: 0;
+        margin-right: -__sidebar_width__;
+    }
     #dokuwiki__content > .pad {
         margin-left: __sidebar_width__; /* left positive margin: width of sidebar (#dokuwiki__aside) */
+    }
+    [dir=rtl] #dokuwiki__content > .pad {
+        margin-left: 0;
+        margin-right: __sidebar_width__;
     }
     #IE6 #dokuwiki__content > .pad,
     #IE7 #dokuwiki__content > .pad {
