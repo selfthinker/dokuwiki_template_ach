@@ -4,15 +4,21 @@
  * @author Anika Henke <anika@selfthinker.org>
  */
 
+body {
+    margin: 0 auto;
+}
+
 #dokuwiki__site {
 }
-#dokuwiki__site .site {
+#dokuwiki__site > .site {
+    margin: 0 auto;
+    max-width: __site_width__;
     padding: 0 10px;
 }
 
 #dokuwiki__header {
 }
-#dokuwiki__header .pad {
+#dokuwiki__header > .pad {
 }
 
 #dokuwiki__site .wrapper {
@@ -29,7 +35,7 @@
         position: relative;
         display: block;
     }
-    #dokuwiki__aside .pad {
+    #dokuwiki__aside > .pad {
         margin-right: 10px;
     }
 
@@ -39,16 +45,16 @@
         width: 100%;
         margin-bottom: 10px;
     }
-    #dokuwiki__content .pad {
+    #dokuwiki__content > .pad {
         margin-left: __sidebar_width__; /* left positive margin: width of sidebar (#dokuwiki__aside) */
     }
-    #IE6 #dokuwiki__content .pad,
-    #IE7 #dokuwiki__content .pad {
+    #IE6 #dokuwiki__content > .pad,
+    #IE7 #dokuwiki__content > .pad {
         height: 1%;
     }
 
 #dokuwiki__footer {
     clear: both;
 }
-#dokuwiki__footer .pad {
+#dokuwiki__footer > .pad {
 }

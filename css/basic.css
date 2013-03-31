@@ -151,6 +151,10 @@ img {
     background-color: transparent;
     font-style: italic;
 }
+img,
+object {
+    max-width: 100%;
+}
 
 hr {
     border: solid __border__;
@@ -181,6 +185,7 @@ pre, code, samp, kbd {
 pre {
     padding: 0.5em;
     overflow: auto;
+    word-wrap: normal;
     border: 1px dashed __border__;
 }
 
@@ -230,18 +235,18 @@ select, optgroup, option {
     margin: 0;
     vertical-align: middle;
 }
-input, textarea, button, select {
+input, textarea, button, select, .qq-upload-button {
     border: 1px solid __border__;
     background-color: __background_alt__;
     color: __text__;
 }
-input[type=text], input[type=password], textarea {
+input[type=text], input[type=password], textarea, .qq-upload-button {
     padding: .1em;
 }
 input[type=radio], input[type=checkbox], input.check {
     padding: 0;
 }
-input[type=submit], input.button, button {
+input[type=submit], input.button, button, .qq-upload-button {
     cursor: pointer;
 }
 input[disabled], button[disabled],

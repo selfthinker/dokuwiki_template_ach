@@ -6,6 +6,11 @@
  * @author Andreas Gohr <andi@splitbrain.org>
  */
 
+html.popup,
+html.popup body {
+    background-color: __background_alt__;
+    color: __text__;
+}
 
 /* header
 ********************************************************************/
@@ -54,7 +59,6 @@
 }
 #dokuwiki__header div.breadcrumbs a {
     color: __link_existent__;
-    background-color: inherit;
 }
 
 
@@ -83,6 +87,7 @@
 .mode_profile a.action.profile,
 .mode_recent a.action.recent,
 .mode_index a.action.index,
+.mode_media a.action.media,
 .mode_revisions a.action.revs,
 .mode_backlink a.action.backlink,
 .mode_subscribe a.action.subscribe {
@@ -120,11 +125,13 @@
     line-height: 1.2;
     margin-bottom: 10px;
 }
-#dokuwiki__aside .pad {
+#dokuwiki__aside > .pad {
     background-color: __background_alt__;
     color: __text__;
     border: 1px solid __border_alt__;
     padding: 10px;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 /* make sidebar more condensed */
@@ -206,16 +213,16 @@
     letter-spacing: normal;
     border-bottom-width: 0;
 }
-form#dw__login {
+#dw__login {
     text-align: left;
 }
-form#dw__login br {
+#dw__login br {
     display: none;
 }
 #dokuwiki__usertools legend {
     display: none;
 }
-input#remember__me {
+#remember__me {
     margin: 0;
     padding: 0;
     width: auto;
@@ -234,6 +241,7 @@ input#remember__me {
     background-color: __background_alt__;
     color: __text__;
     border: 1px solid __border_alt__;
+    word-wrap: break-word;
 }
 
 /*____________ misc ____________*/
@@ -247,6 +255,194 @@ input#remember__me {
 #IE7 .dokuwiki input.button, #IE7 .dokuwiki button {
     line-height: 1.4;
 }
+
+#mediamanager__page .panelContent li dl {
+    padding: 0;
+}
+#mediamanager__diff th {
+    background-color: __background_alt__;
+}
+
+.dokuwiki div.section_highlight {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+}
+.dokuwiki .section_highlight {
+    background-color: __background_alt__;
+}
+
+.dokuwiki div.toolbar button.toolbutton {
+    margin-right: .3em;
+}
+div.picker {
+    border-color: __border_alt__;
+    background-color: __background_neu__;
+}
+div.picker button.pickerbutton {
+    background-color: __background_neu__;
+    color: __text__;
+}
+
+div.insitu-footnote {
+    padding: .2em;
+    border: 1px solid #000;
+    background-color: #ffc;
+}
+.dokuwiki div.footnotes {
+    font-size: 85%;
+}
+.dokuwiki div.footnotes div.fn {
+    padding-bottom: .3em;
+}
+
+.dokuwiki div.search_quickresult {
+    margin-bottom: 1em;
+    padding-bottom: 1em;
+    border-bottom: 1px solid __border__;
+}
+.dokuwiki div.search_quickresult ul li {
+    display: inline;
+    float: none;
+    width: auto;
+    margin-left: 0;
+}
+
+.dokuwiki div.search_result div.search_snippet,
+.dokuwiki dl.search_results dd {
+    margin-left: 1em;
+}
+
+
+.dokuwiki form.search div.ajax_qsearch {
+    position: static;
+    width: auto;
+}
+
+
+.dokuwiki ul.tabs li strong,
+.dokuwiki ul.tabs li a {
+    background-color: __background_alt__;
+}
+
+#mediamanager__page .namespaces h2,
+.dokuwiki ul.tabs li a:hover,
+.dokuwiki ul.tabs li a:active,
+.dokuwiki ul.tabs li a:focus,
+.dokuwiki ul.tabs li strong {
+    background-color: __background_neu__;
+}
+
+#link__wiz_result {
+    background-color: __background_alt__;
+}
+
+
+#media__manager h1,
+#media__manager h2 {
+    font-size: 1.5em;
+    margin: -.5em -.5em .5em -.5em;
+    padding: .5em;
+    border-bottom: 1px solid __border_alt__;
+    background-color: __background__;
+    color: __text_alt__;
+    letter-spacing: 0;
+    font-variant: normal;
+}
+
+#media__content .odd {
+    background-color: __background_neu__;
+}
+
+#mediamanager__page .panelHeader {
+    background-color: __background_neu__;
+}
+
+/*____________ img detail ____________*/
+
+#dokuwiki__detail h1 {
+    font-size: 1.58em;
+    padding: .5em 10px;
+    margin: 0;
+    border-bottom: 1px solid __border_alt__;
+    background-color: __background__;
+    color: __text_alt__;
+    letter-spacing: 0;
+    font-variant: normal;
+}
+
+#dokuwiki__detail div.content {
+    background-color: __background_alt__;
+    color: __text__;
+    padding: 10px;
+}
+
+#dokuwiki__detail div.content div.img_detail {
+    margin: 0 10px;
+    padding: 0 10px;
+    border-left: 1px solid __border__;
+}
+
+#dokuwiki__detail div.img_detail h2 {
+    font-size: 1.39em;
+}
+
+#dokuwiki__detail p.back {
+    padding: 0.5em 1.0em;
+    border-top: 1px solid __border_alt__;
+    background-color: __background__;
+    color: __text_alt__;
+}
+#dokuwiki__detail p.back a {
+    color: __link_title__;
+    background-color: inherit;
+}
+
+/*____________ toc ____________*/
+
+.dokuwiki div.toc,
+#dw__toc {
+    width: 175px;
+}
+
+.dokuwiki div.tocheader, /* old */
+#dw__toc h3 /* new */ {
+    margin-bottom: .2em;
+    background-color: __toc_head_background__;
+    color: __toc_head_text__;
+    border: 1px solid __toc_head_border__;
+}
+
+/* css arrow */
+.dokuwiki .toc span.toc_open,
+.dokuwiki .toc span.toc_close,
+#dw__toc h3 strong {
+    border: .4em solid __toc_head_background__;
+}
+.dokuwiki .toc span.toc_open span,
+.dokuwiki .toc span.toc_close span,
+#dw__toc h3 strong span {
+    display: none;
+}
+
+.dokuwiki .toc span.toc_open,
+#dw__toc h3.closed strong {
+    margin-top: .4em;
+    border-top: .4em solid __text__;
+}
+.dokuwiki .toc span.toc_close,
+#dw__toc h3.open strong {
+    margin-top: 0;
+    border-bottom: .4em solid __text__;
+}
+
+.dokuwiki #toc__inside,
+#dw__toc > div {
+    background-color: __toc_body_background__;
+    color: __text__;
+    border: 1px solid __toc_body_border__;
+}
+
 
 /*____________ JS popup ____________*/
 

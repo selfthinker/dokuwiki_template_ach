@@ -3,31 +3,33 @@
 
 ; Define the stylesheets your template uses here. The second value
 ; defines for which output media the style should be loaded. Currently
-; print, screen and rtl are supported. rtl styles are loaded additionally
-; to screen styles if a right-to-left language is selected (eg. Hebrew).
+; print, screen and all are supported.
 
 [stylesheets]
 
-css/basic.css           = screen
-css/structure.css       = screen
-css/design.css          = screen
-css/content.css         = screen
-css/_imgdetail.css      = screen
-css/_mediamanager.css   = screen
-css/_links.css          = screen
-css/_toc.css            = screen
-css/_footnotes.css      = screen
-css/_search.css         = screen
-css/_recent.css         = screen
-css/_diff.css           = screen
-css/_edit.css           = screen
-css/_modal.css          = screen
-css/_forms.css          = screen
-css/_admin.css          = screen
-css/includes.css        = screen
+css/basic.css             = screen
+css/_imgdetail.css        = screen
+css/_media_popup.css      = screen
+css/_media_fullscreen.css = screen
+css/_fileuploader.css     = screen
+css/_tabs.css             = screen
+css/_links.css            = screen
+css/_toc.css              = screen
+css/_footnotes.css        = screen
+css/_search.css           = screen
+css/_recent.css           = screen
+css/_diff.css             = screen
+css/_edit.css             = screen
+css/_modal.css            = screen
+css/_forms.css            = screen
+css/_admin.css            = screen
+css/structure.css         = screen
+css/design.css            = screen
+css/content.css           = screen
+css/includes.css          = screen
 
-css/rtl.css             = rtl
-css/print.css           = print
+css/mobile.css            = all
+css/print.css             = print
 
 
 ; This section is used to configure some placeholder values used in
@@ -63,8 +65,8 @@ __border_neu__          = "#fff"
 
 ; link colors
 __link_normal__         = "#369"
-__link_existent__       = "#369"
-__link_nonexistent__    = "#c30"
+__existing__            = "#369"
+__missing__             = "#c30"
 __link_title__          = "#369"
 
 ; highlighting search snippets
@@ -86,6 +88,6 @@ __level3__              = "0px"
 __level4__              = "0px"
 __level5__              = "0px"
 
-; sidebar dimensions
+; widths
+__site_width__          = "100%"
 __sidebar_width__       = "185px"
-

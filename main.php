@@ -2,24 +2,26 @@
 /**
  * DokuWiki ACH Template
  *
- * @link   http://dokuwiki.org/template:ach
- * @author Anika Henke <anika@selfthinker.org>
+ * @link     http://dokuwiki.org/template:ach
+ * @author   Anika Henke <anika@selfthinker.org>
+ * @license  GPL 2 (http://www.gnu.org/licenses/gpl.html)
  */
 
 if (!defined('DOKU_INC')) die(); /* must be run from within DokuWiki */
 @require_once(dirname(__FILE__).'/tpl_functions.php'); /* include hook for template functions */
 
 $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER['REMOTE_USER'] );
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+?><!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $conf['lang'] ?>"
-  lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>">
+  lang="<?php echo $conf['lang'] ?>" dir="<?php echo $lang['direction'] ?>" class="no-js">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="UTF-8" />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
     <title><?php tpl_pagetitle() ?> [<?php echo strip_tags($conf['title']) ?>]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
     <?php tpl_metaheaders() ?>
-    <link rel="shortcut icon" href="<?php echo _tpl_getFavicon() /* DW versions > 2010-11-12 can use the core function tpl_getFavicon() */ ?>" />
-    <?php @include(dirname(__FILE__).'/meta.html') /* include hook */ ?>
+    <?php echo tpl_favicon(array('favicon', 'mobile')) ?>
+    <?php tpl_includeFile('meta.html') ?>
 </head>
 
 <body>
@@ -30,14 +32,14 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
     <?php /* classes mode_<action> are added to make it possible to e.g. style a page differently if it's in edit mode,
          see http://www.dokuwiki.org/devel:action_modes for a list of action modes */ ?>
     <?php /* .dokuwiki should always be in one of the surrounding elements (e.g. plugins and templates depend on it) */ ?>
-    <div id="dokuwiki__site"><div class="dokuwiki site mode_<?php echo $ACT ?>">
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="dokuwiki site mode_<?php echo $ACT ?>">
         <?php html_msgarea() /* occasional error and info messages on top of the page */ ?>
-        <?php @include(dirname(__FILE__).'/header.html') /* include hook */ ?>
+        <?php tpl_includeFile('header.html') ?>
 
         <!-- ********** HEADER ********** -->
         <div id="dokuwiki__header"><div class="pad">
 
-            <h1><?php tpl_link(wl(),$conf['title'],'id="dokuwiki__top" accesskey="h" title="[ALT+H]"')?></h1>
+            <h1><?php tpl_link(wl(),$conf['title'],'accesskey="h" title="[ALT+H]"')?></h1>
             <h2>[[<?php echo $ID?>]]</h2>
 
             <!-- BREADCRUMBS -->
@@ -48,8 +50,8 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
                 <div class="breadcrumbs"><?php tpl_youarehere() ?></div>
             <?php } ?>
 
-            <ul class="a11y">
-                <li><a href="#dokuwiki__content"><?php echo tpl_getLang('skip_to_content') ?></a></li>
+            <ul class="a11y skip">
+                <li><a href="#dokuwiki__content"><?php echo $lang['skip_to_content'] ?></a></li>
             </ul>
             <div class="clearer"></div>
             <hr class="a11y" />
@@ -60,13 +62,13 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
             <!-- PAGE ACTIONS -->
             <?php if ($showTools): ?>
                 <div id="dokuwiki__pagetools">
-                    <h3 class="a11y"><?php echo tpl_getLang('page_tools') ?></h3>
+                    <h3 class="a11y"><?php echo $lang['page_tools'] ?></h3>
                     <ul>
                         <?php /* the optional second parameter of tpl_action() switches between a link and a button,
                                  e.g. a button inside a <li> would be: tpl_action('edit',0,'li') */
                             tpl_action('edit', 0, 'li');
                             _tpl_action('discussion', 0, 'li');
-                            tpl_action('history', 0, 'li');
+                            tpl_action('revisions', 0, 'li');
                             tpl_action('backlink', 0, 'li');
                             tpl_action('subscribe', 0, 'li');
                             tpl_action('revert', 0, 'li');
@@ -79,14 +81,15 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
             <!-- ********** ASIDE ********** -->
             <div id="dokuwiki__aside"><div class="pad include">
 
-                <?php tpl_include_page(tpl_getConf('sidebarID')) /* includes the given wiki page */ ?>
+                <?php tpl_sidebar() /* includes the $conf['sidebar'] page */ ?>
 
                 <!-- SITE TOOLS -->
                 <div id="dokuwiki__sitetools">
-                    <h3 class="a11y"><?php echo tpl_getLang('site_tools') ?></h3>
+                    <h3 class="a11y"><?php echo $lang['site_tools'] ?></h3>
                     <ul>
                         <?php
                             tpl_action('recent', 1, 'li');
+                            tpl_action('media', 1, 'li');
                             tpl_action('index', 1, 'li');
                         ?>
                     </ul>
@@ -96,11 +99,12 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
                 <!-- USER TOOLS -->
                 <?php if ($conf['useacl'] && $showTools): ?>
                     <div id="dokuwiki__usertools">
-                        <h3 class="a11y"><?php echo tpl_getLang('user_tools') ?></h3>
+                        <h3 class="a11y"><?php echo $lang['user_tools'] ?></h3>
                         <?php if($_SERVER['REMOTE_USER']){ ?>
                             <ul>
                                 <?php
                                     tpl_action('login', 1, 'li');
+                                    tpl_action('register', 1, 'li');
                                     tpl_action('profile', 1, 'li');
                                     tpl_action('admin', 1, 'li');
                                     _tpl_action('userpage', 1, 'li');
@@ -119,7 +123,7 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
             <!-- ********** CONTENT ********** -->
             <div id="dokuwiki__content"><div class="pad">
                 <?php tpl_flush() /* flush the output buffer */ ?>
-                <?php @include(dirname(__FILE__).'/pageheader.html') /* include hook */ ?>
+                <?php tpl_includeFile('pageheader.html') ?>
 
                 <div class="page">
                     <!-- wikipage start -->
@@ -129,7 +133,7 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
                 </div>
 
                 <?php tpl_flush() ?>
-                <?php @include(dirname(__FILE__).'/pagefooter.html') /* include hook */ ?>
+                <?php tpl_includeFile('pagefooter.html') ?>
             </div></div><!-- /content -->
 
             <div class="clearer"></div>
@@ -147,7 +151,7 @@ $showTools = !tpl_getConf('hideTools') || ( tpl_getConf('hideTools') && $_SERVER
         <div class="license_footer">
             <?php tpl_license('button') /* content license, parameters: img=*badge|button|0, imgonly=*0|1, return=*0|1 */ ?>
         </div>
-        <?php @include(dirname(__FILE__).'/footer.html') /* include hook */ ?>
+        <?php tpl_includeFile('footer.html') ?>
     </div></div><!-- /site -->
 
     <div class="no"><?php tpl_indexerWebBug() /* provide DokuWiki housekeeping, required in all templates */ ?></div>
