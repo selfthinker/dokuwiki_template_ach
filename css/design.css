@@ -8,7 +8,7 @@
 
 html.popup,
 html.popup body {
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
 }
 
@@ -61,7 +61,7 @@ html.popup body {
     clear: both;
     border-top: 1px solid __border_alt__;
     font-size: 75%;
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
 }
 #dokuwiki__header div.breadcrumbs a {
@@ -139,7 +139,7 @@ html.popup body {
     margin-bottom: 10px;
 }
 #dokuwiki__aside > .pad {
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
     border: 1px solid __border_alt__;
     padding: 10px;
@@ -268,7 +268,7 @@ html.popup body {
 
 .dokuwiki .page {
     padding: 10px;
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
     border: 1px solid __border_alt__;
     word-wrap: break-word;
@@ -290,7 +290,7 @@ html.popup body {
     padding: 0;
 }
 #mediamanager__diff th {
-    background-color: __background_alt__;
+    background-color: __background__;
 }
 
 /* some headings in the media manager should not look like headings */
@@ -329,6 +329,7 @@ div.insitu-footnote {
     padding: .2em;
     border: 1px solid #000;
     background-color: #ffc;
+    color: #000;
 }
 .dokuwiki div.footnotes {
     font-size: 85%;
@@ -365,28 +366,8 @@ div.insitu-footnote {
     width: auto;
 }
 
-
-.dokuwiki ul.tabs li strong,
-.dokuwiki ul.tabs li a {
-    background-color: __background_alt__;
-}
-
-#mediamanager__page .namespaces h2,
-.dokuwiki ul.tabs li a:hover,
-.dokuwiki ul.tabs li a:active,
-.dokuwiki ul.tabs li a:focus,
-.dokuwiki ul.tabs li strong {
-    background-color: __background_neu__;
-}
-#mediamanager__page .namespaces h2,
-.dokuwiki .tabs > ul li .curid a,
-.dokuwiki .tabs > ul li .active a,
-.dokuwiki ul.tabs li strong {
-    border-bottom-color: __background_neu__;
-}
-
 #link__wiz_result {
-    background-color: __background_alt__;
+    background-color: __background__;
 }
 
 
@@ -396,18 +377,10 @@ div.insitu-footnote {
     margin: -.5em -.5em .5em -.5em;
     padding: .5em;
     border-bottom: 1px solid __border_alt__;
-    background-color: __background__;
+    background-color: __background_site__;
     color: __text_alt__;
     letter-spacing: 0;
     font-variant: normal;
-}
-
-#media__content .odd {
-    background-color: __background_neu__;
-}
-
-#mediamanager__page .panelHeader {
-    background-color: __background_neu__;
 }
 
 /*____________ img detail ____________*/
@@ -417,14 +390,14 @@ div.insitu-footnote {
     padding: .5em 10px;
     margin: 0;
     border-bottom: 1px solid __border_alt__;
-    background-color: __background__;
+    background-color: __background_site__;
     color: __text_alt__;
     letter-spacing: 0;
     font-variant: normal;
 }
 
 #dokuwiki__detail div.content {
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
     padding: 10px;
 }
@@ -446,7 +419,7 @@ div.insitu-footnote {
 #dokuwiki__detail p.back {
     padding: 0.5em 1.0em;
     border-top: 1px solid __border_alt__;
-    background-color: __background__;
+    background-color: __background_site__;
     color: __text_alt__;
 }
 #dokuwiki__detail p.back a {
@@ -523,7 +496,7 @@ div.insitu-footnote {
 #dokuwiki__footer {
     font-size: 75%;
     margin-bottom: 5px;
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
     border-top: 1px solid __border_alt__;
     border-bottom: 1px solid __border_alt__;

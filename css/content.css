@@ -73,7 +73,7 @@
     border: 1px solid __border__;
 }
 .dokuwiki table.inline th {
-    background-color: __background__;
+    background-color: __background_site__;
     color: __text_alt__;
 }
 .dokuwiki table.inline td {

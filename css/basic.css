@@ -13,7 +13,7 @@ html {
     overflow-y: scroll;
 }
 html, body {
-    background-color: __background__;
+    background-color: __background_site__;
     color: __text__;
     margin: 0;
     padding: 0;
@@ -270,7 +270,7 @@ select, optgroup, option {
 }
 input, textarea, button, select, .qq-upload-button {
     border: 1px solid __border__;
-    background-color: __background_alt__;
+    background-color: __background__;
     color: __text__;
 }
 input[type=text], input[type=password], textarea, .qq-upload-button {

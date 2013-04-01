@@ -44,11 +44,11 @@ css/print.css             = print
 
 ; main text and background colors
 __text__                = "#000"
-__background__          = "#963"
+__background__          = "#cc9"
 
 ; alternative text and background colors
-__text_alt__            = "#996"
-__background_alt__      = "#cc9"
+__text_alt__            = "#cc9"
+__background_alt__      = "#996"
 
 ; neutral text and background colors
 __text_neu__            = "#060"
@@ -58,6 +58,8 @@ __background_neu__      = "#ffc"
 __border__              = "#000"
 
 ;------ additional color placeholders
+
+__background_site__     = "#963"
 
 __text_headline__       = "#330"
 __border_alt__          = "#cc9"

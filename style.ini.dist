@@ -48,7 +48,7 @@ __background__          = "#fff"
 
 ; alternative text and background colors
 __text_alt__            = "#666"
-__background_alt__      = "#fff"
+__background_alt__      = "#ddd"
 
 ; neutral text and background colors
 __text_neu__            = "#ccc"
@@ -58,6 +58,8 @@ __background_neu__      = "#eee"
 __border__              = "#000"
 
 ;------ additional color placeholders
+
+__background_site__     = "#fff"
 
 __text_headline__       = "#000"
 __border_alt__          = "#000"
