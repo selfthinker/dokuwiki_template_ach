@@ -1,0 +1,7 @@
+base     ach
+author   Anika Henke
+email    anika@selfthinker.org
+date     2013-04-01
+name     ACH Template
+desc     Changed page structure, added discussion functionality, includes 4 predefined color schemes
+url      http://www.dokuwiki.org/template:ach
